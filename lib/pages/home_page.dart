@@ -24,8 +24,31 @@ class HomePage extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("hola mundo"),
+                    CircleAvatar(
+                      radius: 30.0,
+                      backgroundColor: Colors.amber,
+                      backgroundImage: NetworkImage(
+                          "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                    ),
+                    Text(
+                      "Juan Perez Speed",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "Administrador",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ],
                 ),
               ),
