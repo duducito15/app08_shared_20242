@@ -1,6 +1,14 @@
+import 'package:app08_shared_20242/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   bool isDarkMode = false;
   int gender = 1;
 
@@ -11,73 +19,7 @@ class HomePage extends StatelessWidget {
         title: Text("SharedPreferences App"),
         centerTitle: true,
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      "https://images.pexels.com/photos/1025469/pexels-photo-1025469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                ),
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 30.0,
-                      backgroundColor: Colors.amber,
-                      backgroundImage: NetworkImage(
-                          "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                    ),
-                    Text(
-                      "Juan Perez Speed",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "Administrador",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("My profile"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.file_copy),
-              title: Text("Portafolio"),
-            ),
-            ListTile(
-              leading: Icon(Icons.lock),
-              title: Text("Change Password"),
-            ),
-            Divider(
-              indent: 12,
-              endIndent: 12,
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text("Logout"),
-            ),
-          ],
-        ),
-      ),
+      drawer: MyDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -112,7 +54,10 @@ class HomePage extends StatelessWidget {
             // Switch(value: true, onChanged: (bool value){}),
             SwitchListTile(
               value: isDarkMode,
-              onChanged: (value) {},
+              onChanged: (bool value) {
+                isDarkMode = value;
+                setState(() {});
+              },
               title: Text("Dark mode"),
             ),
             const SizedBox(
@@ -129,14 +74,29 @@ class HomePage extends StatelessWidget {
             RadioListTile(
               value: 1,
               groupValue: gender,
-              onChanged: (value) {},
+              onChanged: (int? value) {
+                gender = value!;
+                setState(() {});
+              },
               title: Text("Male"),
             ),
             RadioListTile(
               value: 2,
               groupValue: gender,
-              onChanged: (value) {},
+              onChanged: (int? value) {
+                gender = value!;
+                setState(() {});
+              },
               title: Text("Female"),
+            ),
+            RadioListTile(
+              value: 3,
+              groupValue: gender,
+              onChanged: (int? value) {
+                gender = value!;
+                setState(() {});
+              },
+              title: Text("Binario"),
             ),
             const SizedBox(
               height: 12.0,
