@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  bool isDarkMode = false;
+  int gender = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +59,105 @@ class HomePage extends StatelessWidget {
               title: Text("My profile"),
               onTap: () {},
             ),
+            ListTile(
+              leading: Icon(Icons.file_copy),
+              title: Text("Portafolio"),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Change Password"),
+            ),
+            Divider(
+              indent: 12,
+              endIndent: 12,
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Logout"),
+            ),
           ],
         ),
       ),
-      body: Column(
-        children: [Text("Hola")],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Configuración General",
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Nombre completo",
+              ),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Dirección actual",
+              ),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            // Switch(value: true, onChanged: (bool value){}),
+            SwitchListTile(
+              value: isDarkMode,
+              onChanged: (value) {},
+              title: Text("Dark mode"),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              "Gender",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            // Radio(value: 0, groupValue: 1, onChanged: (int? value){},),
+            RadioListTile(
+              value: 1,
+              groupValue: gender,
+              onChanged: (value) {},
+              title: Text("Male"),
+            ),
+            RadioListTile(
+              value: 2,
+              groupValue: gender,
+              onChanged: (value) {},
+              title: Text("Female"),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(
+                Icons.save,
+                color: Colors.white,
+              ),
+              label: Text(
+                "Save Data",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                minimumSize: Size(double.infinity, 50),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
