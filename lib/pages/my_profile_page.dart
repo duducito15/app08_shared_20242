@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MyProfilePage extends StatelessWidget {
+class MyProfilePage extends StatefulWidget {
+  @override
+  State<MyProfilePage> createState() => _MyProfilePageState();
+}
+
+class _MyProfilePageState extends State<MyProfilePage> {
   String fullName = "";
   String address = "";
   bool darkMode = false;
   int gender = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getSharedPreferences();
+  }
+
+  getSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    fullName = prefs.getString("fullName") ?? "Sin Nombre";
+    address = prefs.getString("address") ?? "Sin Dirección";
+    darkMode = prefs.getBool("darkMode") ?? false;
+    gender = prefs.getInt("gender") ?? 3;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

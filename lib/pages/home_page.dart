@@ -29,17 +29,6 @@ class _HomePageState extends State<HomePage> {
     print("Guardando datos en Shared Preferences");
   }
 
-  getSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String fullName = prefs.getString("fullName") ?? "Sin Nombre";
-    String address = prefs.getString("address") ?? "Sin Dirección";
-    //bool res = _prefs.getBool("mayor") ?? true;
-    print(fullName);
-    print(address);
-    print(isDarkMode);
-    print(gender);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton.icon(
               onPressed: () {
                 saveSharedPreferences();
-                getSharedPreferences();
+                //getSharedPreferences();
               },
               icon: Icon(
                 Icons.save,
