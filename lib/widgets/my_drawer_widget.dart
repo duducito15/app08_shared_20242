@@ -1,3 +1,4 @@
+import 'package:app08_shared_20242/pages/my_profile_page.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawerWidget extends StatelessWidget {
@@ -51,7 +52,14 @@ class MyDrawerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.person),
             title: Text("My profile"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyProfilePage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.file_copy),

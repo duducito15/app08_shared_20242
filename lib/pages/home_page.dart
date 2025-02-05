@@ -1,8 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:app08_shared_20242/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   //const HomePage({super.key});
 
   @override
@@ -12,23 +16,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isDarkMode = false;
   int gender = 1;
-  TextEditingController _fullNameController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   saveSharedPreferences() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _prefs.setString("fullName", _fullNameController.text);
-    _prefs.setString("address", _addressController.text);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("fullName", _fullNameController.text);
+    prefs.setString("address", _addressController.text);
+    prefs.setBool("darkMode", isDarkMode);
+    prefs.setInt("gender", gender);
+
     print("Guardando datos en Shared Preferences");
   }
 
   getSharedPreferences() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    String fullName = _prefs.getString("fullName") ?? "Sin Nombre";
-    String address = _prefs.getString("address") ?? "Sin Dirección";
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String fullName = prefs.getString("fullName") ?? "Sin Nombre";
+    String address = prefs.getString("address") ?? "Sin Dirección";
     //bool res = _prefs.getBool("mayor") ?? true;
     print(fullName);
     print(address);
+    print(isDarkMode);
+    print(gender);
   }
 
   @override
