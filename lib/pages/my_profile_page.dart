@@ -8,8 +8,6 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
-  //static final SharedGlobal sharedGlobal = SharedGlobal();
-
   String fullName = "";
   String address = "";
   bool darkMode = false;
