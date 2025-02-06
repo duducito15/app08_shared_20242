@@ -1,3 +1,4 @@
+import 'package:app08_shared_20242/utils/shared_global.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,6 +8,8 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
+  //static final SharedGlobal sharedGlobal = SharedGlobal();
+
   String fullName = "";
   String address = "";
   bool darkMode = false;
@@ -19,11 +22,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
   }
 
   getSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    fullName = prefs.getString("fullName") ?? "Sin Nombre";
-    address = prefs.getString("address") ?? "Sin Dirección";
-    darkMode = prefs.getBool("darkMode") ?? false;
-    gender = prefs.getInt("gender") ?? 3;
     setState(() {});
   }
 
@@ -47,22 +45,22 @@ class _MyProfilePageState extends State<MyProfilePage> {
             ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text(fullName),
+              title: Text(SharedGlobal().fullName),
               subtitle: Text("Nombre completo"),
             ),
             ListTile(
               leading: Icon(Icons.location_city),
-              title: Text(address),
+              title: Text(SharedGlobal().address),
               subtitle: Text("Dirección"),
             ),
             ListTile(
               leading: Icon(Icons.dark_mode),
-              title: Text(darkMode.toString()),
+              title: Text(SharedGlobal().darkMode.toString()),
               subtitle: Text("Modo oscuro"),
             ),
             ListTile(
               leading: Icon(Icons.transgender),
-              title: Text(gender.toString()),
+              title: Text(SharedGlobal().gender.toString()),
               subtitle: Text("Genero"),
             ),
           ],

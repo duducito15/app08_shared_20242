@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:app08_shared_20242/utils/shared_global.dart';
 import 'package:app08_shared_20242/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,11 +21,10 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _addressController = TextEditingController();
 
   saveSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("fullName", _fullNameController.text);
-    prefs.setString("address", _addressController.text);
-    prefs.setBool("darkMode", isDarkMode);
-    prefs.setInt("gender", gender);
+    SharedGlobal().fullName = _fullNameController.text;
+    SharedGlobal().address = _addressController.text;
+    SharedGlobal().darkMode = isDarkMode;
+    SharedGlobal().gender = gender;
 
     print("Guardando datos en Shared Preferences");
   }

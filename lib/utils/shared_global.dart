@@ -19,7 +19,7 @@ class SharedGlobal {
     prefs.setString("fullname", value);
   }
 
-  String get fullname {
+  String get fullName {
     return prefs.getString("fullname") ?? "-";
   }
 
