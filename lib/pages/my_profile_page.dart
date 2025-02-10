@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyProfilePage extends StatefulWidget {
+  const MyProfilePage({super.key});
+
   @override
   State<MyProfilePage> createState() => _MyProfilePageState();
 }
@@ -53,7 +55,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
             ),
             ListTile(
               leading: Icon(Icons.dark_mode),
-              title: Text(SharedGlobal().darkMode.toString()),
+              title: Text(SharedGlobal().darkMode.toString() == true
+                  ? "Activado"
+                  : "Desactivado"),
               subtitle: Text("Modo oscuro"),
             ),
             ListTile(

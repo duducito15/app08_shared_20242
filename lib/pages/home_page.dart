@@ -3,7 +3,6 @@
 import 'package:app08_shared_20242/utils/shared_global.dart';
 import 'package:app08_shared_20242/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
